@@ -34,7 +34,7 @@ public class ConnectExample {
                 // 4. 如果成功就创建一个ByteBuf保存数据
                 ByteBuf buffer = Unpooled.copiedBuffer("Hello", Charset.defaultCharset());
                 // 5. 异步发送数据到远程，同时返回ChannelFuture
-                ChannelFuture wf = f.channel().write(buffer);
+                ChannelFuture wf = f.channel().writeAndFlush(buffer);
             } else {
                 // 6. 如果有错误抛出Throwable
                 Throwable cause = f.cause();
