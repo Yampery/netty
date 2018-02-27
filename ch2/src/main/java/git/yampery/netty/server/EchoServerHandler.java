@@ -16,7 +16,12 @@ import io.netty.util.CharsetUtil;
  */
 @Sharable   // 标示一个ChannelHandler可以被多个Channel安全地共享
 public class EchoServerHandler extends ChannelInboundHandlerAdapter {
-
+    /**
+     * 每个信息入站时调用
+     * @param ctx
+     * @param msg
+     * @throws Exception
+     */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf in = (ByteBuf) msg;
@@ -26,6 +31,11 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
         ctx.write(in);
     }
 
+    /**
+     * channelRead()是当前处理器最后一条消息时调用
+     * @param ctx
+     * @throws Exception
+     */
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
         // 冲刷所有待审核消息到远程节点，并关闭该通道
@@ -33,6 +43,12 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
                 .addListener(ChannelFutureListener.CLOSE);
     }
 
+    /**
+     * 读操作捕获到异常时调用
+     * @param ctx
+     * @param cause
+     * @throws Exception
+     */
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         // 打印异常堆栈跟踪
