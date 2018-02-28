@@ -31,7 +31,7 @@ public class EchoServer {
             return;
         }
         // 设置一个端口值
-        int port = Integer.getInteger(args[0]);
+        int port = Integer.parseInt(args[0]);
         // 调用服务的start()方法
         new EchoServer(port).start();
     }
