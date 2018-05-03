@@ -1,4 +1,5 @@
 rootProject.name = 'netty'
 include 'ch1'
 include 'ch2'
+include 'nio'
 
