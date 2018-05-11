@@ -18,11 +18,11 @@ public class ChannelCopy {
         ReadableByteChannel rChannel = null;
         WritableByteChannel wChannel = null;
         try {
-        // 创建通道，从输入向输出复制
-        rChannel = Channels.newChannel(System.in);
-        wChannel = Channels.newChannel(System.out);
-        // copy1(rChannel, wChannel);
-        copy2(rChannel, wChannel);
+            // 创建通道，从输入向输出复制
+            rChannel = Channels.newChannel(System.in);
+            wChannel = Channels.newChannel(System.out);
+            // copy1(rChannel, wChannel);
+            copy2(rChannel, wChannel);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
